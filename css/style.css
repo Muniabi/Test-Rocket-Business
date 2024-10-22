@@ -120,13 +120,11 @@
 .main .cards-block__card:nth-child(3) {
   grid-column: span 1;
   grid-row: span 2;
-  background-image: url("../img/Background_3.png");
 }
 
 .main .cards-block__card:nth-child(4) {
   grid-column: span 1;
   grid-row: span 2;
-  background-image: url("../img/Background_4.png");
 }
 
 .main .cards-block__card:nth-child(5) {
@@ -236,4 +234,60 @@
 
 .main .sale {
   background: #39b0f4;
+}
+
+.card--three .card-header {
+  background-image: url("../img/Background_3.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.card--three .card-header__title {
+  font-size: 14px;
+}
+
+.card--three .card-main {
+  background-color: #ffffff;
+  color: #444444;
+  font-size: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.card--three .card-main .price {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.card--four .card-header {
+  background-image: url("../img/Background_4.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.card--four .card-header__title {
+  font-size: 14px;
+}
+
+.card--four .card-main {
+  background-color: #ffffff;
+  color: #444444;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card--four .card-main .price {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 10px 0;
 }

@@ -9,7 +9,7 @@
 
 .container {
   max-width: 1440px;
-  padding-inline: 120px;
+  padding-inline: clamp(20px, 8.3vw, 120px);
   margin: 0 auto;
 }
 
@@ -21,6 +21,7 @@
   color: white;
   font-weight: bold;
   transition: all 0.4s ease;
+  font-size: clamp(12px, 1.39vw, 20px);
 }
 
 .btn:hover {
@@ -101,7 +102,7 @@
 }
 
 .main {
-  padding-block: 64px;
+  padding-block: clamp(48px, 4.4vw, 64px);
   background-color: #f2f2f2;
 }
 
@@ -109,8 +110,8 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-template-areas: "card1 card2 card3" "card4 card5 card5";
-  grid-gap: 15px;
+  grid-template-areas: "card1  card1 card2 card2 card3 card4" "card1  card1 card5 card5 card3 card4";
+  grid-gap: clamp(16px, 1.39vw, 20px);
 }
 
 .main .cards-block__card {
@@ -123,6 +124,7 @@
   font-weight: bold;
   border-radius: 5px;
   width: 100%;
+  max-width: 100%;
   height: 100%;
   background-size: cover;
   background-position: center;
@@ -131,36 +133,55 @@
 .main .cards-block__card:nth-child(1) {
   grid-column: span 2;
   grid-row: span 2;
-  grid-area: "card1";
+  grid-area: card1;
   background-image: url("../img/Background_1.png");
 }
 
 .main .cards-block__card:nth-child(2) {
   grid-column: span 2;
   grid-row: span 1;
+  grid-area: card2;
   background-image: url("../img/Background_2.png");
 }
 
 .main .cards-block__card:nth-child(3) {
   grid-column: span 1;
   grid-row: span 2;
+  grid-area: card3;
 }
 
 .main .cards-block__card:nth-child(4) {
   grid-column: span 1;
   grid-row: span 2;
+  grid-area: card4;
 }
 
 .main .cards-block__card:nth-child(5) {
   grid-column: span 2;
   grid-row: span 2;
+  grid-area: card5;
   background-image: url("../img/Background_5.png");
-  height: 154px;
 }
 
 @media (max-width: 1024px) {
   .main .cards-block {
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: "card1 card1 card3 card4" "card1 card1 card3 card4" "card2 card2 card5 card5";
+  }
+}
+
+@media (max-width: 800px) {
+  .main .cards-block {
+    grid-template-areas: "card1 card1 card1 card1" "card3 card3 card4 card4" "card2 card2 card5 card5";
+  }
+}
+
+@media (max-width: 360px) {
+  .main .cards-block {
+    grid-template-columns: 1 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: "card1" "card1" "card2" "card5" "card3 card4";
   }
 }
 
@@ -173,8 +194,9 @@
 }
 
 .main .card-header__title {
-  font-size: 20px;
+  font-size: clamp(16px, 1.39vw, 20px);
   font-weight: 600;
+  text-align: left;
 }
 
 .main .card-header__actions {
@@ -234,12 +256,33 @@
   font-weight: 700;
   color: white;
   background: #18c576;
-  padding: 8px 20px;
+  padding: 8px clamp(8px, 1.39vw, 12px);
   border-radius: 5px;
 }
 
 .main .card-main__button:hover {
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .main .card-main__button {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+@media (max-width: 1300px) {
+  .main .card-main {
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .main .card-main {
+    gap: 5px;
+  }
 }
 
 .main .small-discount {

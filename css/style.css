@@ -314,9 +314,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(5px);
-  display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
@@ -340,9 +339,8 @@
 }
 
 .popup-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .popup-close {
@@ -374,7 +372,8 @@
 .popup-checkbox {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 8px;
+  color: #444444;
 }
 
 .popup-checkbox input {
@@ -385,7 +384,6 @@
   cursor: pointer;
 }
 
-/* Запрет скроллинга при активном pop-up */
 body.no-scroll {
   overflow: hidden;
 }

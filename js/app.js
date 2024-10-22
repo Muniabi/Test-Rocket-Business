@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll(".button.btn");
     const popupForm = document.getElementById("popup-form");
 
-    // Открытие pop-up при нажатии на кнопку "Оставить заявку"
+    // Открытие pop-up
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
             popupOverlay.style.display = "flex";
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.remove("no-scroll");
     });
 
-    // Закрытие pop-up при клике на затемнённую область
+    // Закрытие pop-up при клике на область
     popupOverlay.addEventListener("click", (e) => {
         if (e.target === popupOverlay) {
             popupOverlay.style.display = "none";

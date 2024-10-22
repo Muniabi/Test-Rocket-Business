@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -41,7 +42,7 @@
   border: none;
   font-weight: 500;
   font-size: 14px;
-  color: white;
+  color: #fff;
   clip-path: polygon(10% 1%, 100% 0%, 90% 100%, 0% 100%);
   background-color: #18c576;
   cursor: pointer;
@@ -86,8 +87,7 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-gap: 15px;
 }
 
 .main .cards-block__card {
@@ -246,23 +246,29 @@
 
 .card--three .card-header__title {
   font-size: 14px;
+  text-align: left;
 }
 
 .card--three .card-main {
-  background-color: #ffffff;
+  background-color: #fff;
   color: #444444;
-  font-size: 14px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  align-items: center;
 }
 
 .card--three .card-main .price {
   font-size: 20px;
   font-weight: 700;
   margin: 10px 0;
+}
+
+.card--three .card-main__button {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  white-space: nowrap;
 }
 
 .card--four .card-header {
@@ -275,10 +281,11 @@
 
 .card--four .card-header__title {
   font-size: 14px;
+  text-align: left;
 }
 
 .card--four .card-main {
-  background-color: #ffffff;
+  background-color: #fff;
   color: #444444;
   padding: 20px;
   display: flex;
@@ -290,4 +297,95 @@
   font-size: 20px;
   font-weight: 700;
   margin: 10px 0;
+}
+
+.card--four .card-main__button {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+/* Общие стили pop-up */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+/* Заголовок и крестик */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.popup-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.popup-close {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Поля ввода */
+.popup-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Чекбокс и кнопка */
+.popup-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.popup-checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.popup-checkbox input {
+  margin-right: 10px;
+}
+
+.button {
+  cursor: pointer;
+}
+
+/* Запрет скроллинга при активном pop-up */
+body.no-scroll {
+  overflow: hidden;
 }

@@ -90,20 +90,26 @@
                 <!-- 3 card -->
                 <div class="cards-block__card card card--three">
                     <div class="card-header">
-                        <div class="card-header__title">
-                            Сельдерей корневой, 1 кг
+                        <div class="card-main__tags">
+                            <div class="card-main__tag small-discount">
+                                - 29%
+                            </div>
+                            <div class="card-main__tag day-product">
+                                Товар дня
+                            </div>
                         </div>
+
                         <div class="card-header__actions">
                             <img src="/img/Like.svg" alt="Like" />
                             <img src="/img/Eye.svg" alt="Eye" />
                         </div>
                     </div>
                     <div class="card-main">
-                        <div class="card-main__tags">
-                            <div class="card-main__tag hit">Хит</div>
+                        <div class="card-header__title">
+                            Попкорн солёный, для СВЧ-печи, 120 г
                         </div>
                         <div class="card-main__button">
-                            <p class="price">300 ₽</p>
+                            <p class="price">160 ₽</p>
                             <button class="button btn">Оставить заявку</button>
                         </div>
                     </div>
@@ -111,18 +117,20 @@
                 <!-- 4 card -->
                 <div class="cards-block__card card card--four">
                     <div class="card-header">
-                        <div class="card-header__title">Шпинат, 100 г</div>
+                        <div class="card-main__tags">
+                            <div class="card-main__tag hit">Хит</div>
+                        </div>
                         <div class="card-header__actions">
                             <img src="/img/Like.svg" alt="Like" />
                             <img src="/img/Eye.svg" alt="Eye" />
                         </div>
                     </div>
                     <div class="card-main">
-                        <div class="card-main__tags">
-                            <div class="card-main__tag hit">Хит</div>
+                        <div class="card-header__title">
+                            Эскимо с малиной, 150 г
                         </div>
                         <div class="card-main__button">
-                            <p class="price">400 ₽</p>
+                            <p class="price">190 ₽</p>
                             <button class="button btn">Оставить заявку</button>
                         </div>
                     </div>
@@ -152,5 +160,39 @@
                 </div>
             </div>
         </main>
+        <div class="popup-overlay" id="popup-overlay">
+            <div class="popup">
+                <div class="popup-header">
+                    <h2 class="popup-title">Оставьте заявку</h2>
+                    <button id="popup-close" class="popup-close">×</button>
+                </div>
+                <form class="popup-form" id="popup-form">
+                    <input
+                        type="text"
+                        class="popup-input"
+                        id="name"
+                        placeholder="Ваше имя"
+                        required
+                    />
+                    <input
+                        type="tel"
+                        class="popup-input"
+                        id="phone"
+                        placeholder="Ваш номер телефона"
+                        required
+                    />
+                    <div class="popup-bottom">
+                        <label class="popup-checkbox">
+                            <input type="checkbox" id="agree" required />
+                            Я соглашаюсь на обработку персональных данных
+                        </label>
+                        <button type="submit" class="button btn">
+                            Отправить
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="/js/app.js"></script>
     </body>
 </html>

@@ -13,6 +13,28 @@
   margin: 0 auto;
 }
 
+.btn {
+  cursor: pointer;
+  background: linear-gradient(145deg, #24c06e, #1ba35a);
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: white;
+  font-weight: bold;
+  transition: all 0.4s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(145deg, #1ba35a, #24c06e);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3), -8px -8px 20px rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.btn:active {
+  transform: scale(0.95);
+  background: linear-gradient(145deg, #1ba35a, #24c06e);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1), -2px -2px 5px rgba(255, 255, 255, 0.1);
+}
+
 .header {
   padding-block: 64px;
 }
@@ -43,7 +65,7 @@
   font-weight: 500;
   font-size: 14px;
   color: #fff;
-  clip-path: polygon(10% 1%, 100% 0%, 90% 100%, 0% 100%);
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
   background-color: #18c576;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -51,7 +73,7 @@
 
 .header__button:hover {
   background-color: #00965a;
-  transform: scale(1.1) rotate(-3deg);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .header__button:hover img {
@@ -65,7 +87,7 @@
 }
 
 .header__button:active {
-  transform: scale(1) rotate(0deg);
+  transform: scale(0.9);
 }
 
 .header__button__play {
@@ -184,7 +206,7 @@
 }
 
 .main .card-main__tag {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   border-radius: 50px;
   color: white;
@@ -201,6 +223,7 @@
 .main .card-main__button .price {
   font-size: 20px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .main .card-main__button .button {
@@ -212,7 +235,7 @@
   border-radius: 5px;
 }
 
-.main .card-main__button .button:hover {
+.main .card-main__button:hover {
   cursor: pointer;
 }
 
@@ -378,10 +401,6 @@
 
 .popup-checkbox input {
   margin-right: 10px;
-}
-
-.button {
-  cursor: pointer;
 }
 
 body.no-scroll {

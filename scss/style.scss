@@ -29,6 +29,32 @@ $color-black: rgba(0, 0, 0, 1);
     margin: 0 auto;
 }
 
+.btn {
+    cursor: pointer;
+    background: linear-gradient(145deg, #24c06e, #1ba35a);
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    transition: all 0.4s ease;
+
+    &:hover {
+        background: linear-gradient(145deg, #1ba35a, #24c06e);
+        box-shadow:
+            8px 8px 20px rgba(0, 0, 0, 0.3),
+            -8px -8px 20px rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: scale(0.95);
+        background: linear-gradient(145deg, #1ba35a, #24c06e);
+        box-shadow:
+            2px 2px 5px rgba(0, 0, 0, 0.1),
+            -2px -2px 5px rgba(255, 255, 255, 0.1);
+    }
+}
+
 .header {
     padding-block: 64px;
 
@@ -58,14 +84,15 @@ $color-black: rgba(0, 0, 0, 1);
         font-weight: 500;
         font-size: 14px;
         color: $color-white;
-        clip-path: polygon(10% 1%, 100% 0%, 90% 100%, 0% 100%);
+        clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+
         background-color: $color-green;
         cursor: pointer;
         transition: all 0.3s ease;
 
         &:hover {
             background-color: $color-green-hover;
-            transform: scale(1.1) rotate(-3deg);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 
             & img {
                 transition: transform 0.6s ease;
@@ -79,7 +106,7 @@ $color-black: rgba(0, 0, 0, 1);
         }
 
         &:active {
-            transform: scale(1) rotate(0deg);
+            transform: scale(0.9);
         }
 
         &__play {
@@ -198,7 +225,7 @@ $color-black: rgba(0, 0, 0, 1);
         }
 
         &__tag {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 600;
             border-radius: 50px;
             color: white;
@@ -214,6 +241,7 @@ $color-black: rgba(0, 0, 0, 1);
             .price {
                 font-size: 20px;
                 font-weight: 700;
+                white-space: nowrap;
             }
 
             .button {
@@ -223,10 +251,10 @@ $color-black: rgba(0, 0, 0, 1);
                 background: $color-green;
                 padding: 8px 20px;
                 border-radius: 5px;
+            }
 
-                &:hover {
-                    cursor: pointer;
-                }
+            &:hover {
+                cursor: pointer;
             }
         }
     }
@@ -400,10 +428,6 @@ $color-black: rgba(0, 0, 0, 1);
 
 .popup-checkbox input {
     margin-right: 10px;
-}
-
-.button {
-    cursor: pointer;
 }
 
 body.no-scroll {

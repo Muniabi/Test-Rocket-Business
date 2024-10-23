@@ -159,6 +159,68 @@
                     </div>
                 </div>
             </div>
+            <!-- Слайдер для мобильной версии -->
+            <div class="swiper-container mobile-slider">
+                <div class="swiper-wrapper">
+                    <!-- Слайд 1: Карточка 3 -->
+                    <div class="swiper-slide">
+                        <div class="card card--three">
+                            <div class="card-header">
+                                <div class="card-main__tags">
+                                    <div class="card-main__tag small-discount">
+                                        - 29%
+                                    </div>
+                                    <div class="card-main__tag day-product">
+                                        Товар дня
+                                    </div>
+                                </div>
+                                <div class="card-header__actions">
+                                    <img src="/img/Like.svg" alt="Like" />
+                                    <img src="/img/Eye.svg" alt="Eye" />
+                                </div>
+                            </div>
+                            <div class="card-main">
+                                <div class="card-header__title">
+                                    Попкорн солёный, для СВЧ-печи, 120 г
+                                </div>
+                                <div class="card-main__button">
+                                    <p class="price">160 ₽</p>
+                                    <button class="button btn">
+                                        Оставить заявку
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Слайд 2: Карточка 4 -->
+                    <div class="swiper-slide">
+                        <div class="card card--four">
+                            <div class="card-header">
+                                <div class="card-main__tags">
+                                    <div class="card-main__tag hit">Хит</div>
+                                </div>
+                                <div class="card-header__actions">
+                                    <img src="/img/Like.svg" alt="Like" />
+                                    <img src="/img/Eye.svg" alt="Eye" />
+                                </div>
+                            </div>
+                            <div class="card-main">
+                                <div class="card-header__title">
+                                    Эскимо с малиной, 150 г
+                                </div>
+                                <div class="card-main__button">
+                                    <p class="price">190 ₽</p>
+                                    <button class="button btn">
+                                        Оставить заявку
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Навигация для слайдера -->
+                <div class="swiper-pagination"></div>
+            </div>
         </main>
         <div class="popup-overlay" id="popup-overlay">
             <div class="popup">
@@ -174,6 +236,7 @@
                         placeholder="Ваше имя *"
                         required
                     />
+                    <span class="error-message" id="name-error"></span>
                     <input
                         type="tel"
                         class="popup-input"
@@ -181,6 +244,7 @@
                         placeholder="Ваш номер телефона *"
                         required
                     />
+                    <span class="error-message" id="phone-error"></span>
                     <div class="popup-bottom">
                         <label class="popup-checkbox">
                             <input type="checkbox" id="agree" required />
@@ -193,6 +257,12 @@
                 </form>
             </div>
         </div>
+
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/swiper/swiper-bundle.min.css"
+        />
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         <script src="/js/app.js"></script>
     </body>
 </html>

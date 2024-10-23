@@ -37,20 +37,45 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Валидация и отправка формы
-    popupForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        // Проверяем, что все обязательные поля заполнены
-        const name = document.getElementById("name").value;
-        const phone = document.getElementById("phone").value;
-        const agree = document.getElementById("agree").checked;
+    const phoneInput = document.getElementById("phone");
+    const nameInput = document.getElementById("name");
+    const phoneError = document.getElementById("phone-error");
+    const nameError = document.getElementById("name-error");
 
-        if (name && phone && agree) {
-            alert("Заявка отправлена!");
-            popupOverlay.style.display = "none";
-            document.body.classList.remove("no-scroll");
+    form.addEventListener("submit", (e) => {
+        let isValid = true;
+
+        if (
+            !/^\+?[78][-(]?\d{3}[-)]?\d{3}[-]?\d{2}[-]?\d{2}$/.test(
+                phoneInput.value
+            )
+        ) {
+            phoneError.textContent = "Неверный формат телефона";
+            phoneError.style.display = "block";
+            isValid = false;
         } else {
-            alert("Заполните все поля и примите условия обработки данных.");
+            phoneError.style.display = "none";
+        }
+
+        if (nameInput.value.trim() === "") {
+            nameError.textContent = "Поле не заполнено";
+            nameError.style.display = "block";
+            isValid = false;
+        } else {
+            nameError.style.display = "none";
+        }
+
+        if (!isValid) {
+            e.preventDefault();
         }
     });
+});
+
+const swiper = new Swiper(".swiper-container", {
+    direction: "horizontal",
+    loop: true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
 });

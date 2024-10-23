@@ -203,14 +203,11 @@ $color-black: rgba(0, 0, 0, 1);
 
             @include responsive(360px) {
                 grid-template-columns: 1fr;
-                grid-template-rows: repeat(5, 1fr);
+                grid-template-rows: repeat(3, 1fr);
                 grid-template-areas:
                     "card1"
-                    "card1"
                     "card2"
-                    "card5"
-                    "card3"
-                    "card4";
+                    "card5";
             }
         }
     }
@@ -404,6 +401,10 @@ $color-black: rgba(0, 0, 0, 1);
             }
         }
     }
+
+    @include responsive(360px) {
+        display: none;
+    }
 }
 
 /* Общие стили pop-up */
@@ -482,4 +483,9 @@ $color-black: rgba(0, 0, 0, 1);
 
 body.no-scroll {
     overflow: hidden;
+}
+
+.swiper-container {
+    width: 100%; /* или max-width: 1200px; */
+    overflow: hidden; /* Это предотвратит растяжение */
 }

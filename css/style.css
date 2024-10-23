@@ -179,9 +179,9 @@
 
 @media (max-width: 360px) {
   .main .cards-block {
-    grid-template-columns: 1 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: repeat(5, 1fr);
-    grid-template-areas: "card1" "card1" "card2" "card5" "card3 card4";
+    grid-template-areas: "card1" "card1" "card2" "card5" "card3" "card4";
   }
 }
 

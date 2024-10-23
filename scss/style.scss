@@ -202,14 +202,15 @@ $color-black: rgba(0, 0, 0, 1);
             }
 
             @include responsive(360px) {
-                grid-template-columns: 1 1fr;
+                grid-template-columns: 1fr;
                 grid-template-rows: repeat(5, 1fr);
                 grid-template-areas:
                     "card1"
                     "card1"
                     "card2"
                     "card5"
-                    "card3 card4";
+                    "card3"
+                    "card4";
             }
         }
     }

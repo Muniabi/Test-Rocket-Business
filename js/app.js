@@ -103,11 +103,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-const swiper = new Swiper(".swiper-container", {
-    direction: "horizontal",
-    loop: true,
+const swiper = new Swiper(".mySwiper", {
+    slidesPerView: "auto",
+    centeredSlides: true,
+    spaceBetween: 30,
     pagination: {
         el: ".swiper-pagination",
         clickable: true,
+    },
+    breakpoints: {
+        360: {
+            centeredSlides: true,
+        },
+        361: {
+            centeredSlides: false,
+            // display: "none",
+        },
     },
 });

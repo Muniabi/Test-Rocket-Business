@@ -12,6 +12,12 @@
     }
 }
 
+@mixin responsive-gt($breakpoint) {
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}
+
 $color-white: #fff;
 $color-green: rgba(24, 197, 118, 1);
 $color-green-hover: rgba(0, 150, 90, 1);
@@ -125,285 +131,109 @@ $color-black: rgba(0, 0, 0, 1);
 .main {
     padding-block: clamp(48px, 4.4vw, 64px);
     background-color: rgba(242, 242, 242, 1);
-
-    .cards {
-        &-block {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            grid-template-areas:
-                "card1  card1 card2 card2 card3 card4"
-                "card1  card1 card5 card5 card3 card4";
-            grid-gap: clamp(16px, 1.39vw, 20px);
-
-            &__card {
-                display: flex;
-                justify-content: space-between;
-                flex-direction: column;
-                text-align: center;
-                color: white;
-                font-size: 24px;
-                font-weight: bold;
-                border-radius: 5px;
-                width: 100%;
-                max-width: 100%; // Убедись, что максимальная ширина не ограничивает карточки
-                height: 100%;
-                background-size: cover;
-                background-position: center;
-
-                &:nth-child(1) {
-                    grid-column: span 2;
-                    grid-row: span 2;
-                    grid-area: card1;
-                    background-image: url("../img/Background_1.png");
-                }
-
-                &:nth-child(2) {
-                    grid-column: span 2;
-                    grid-row: span 1;
-                    grid-area: card2;
-                    background-image: url("../img/Background_2.png");
-                }
-
-                &:nth-child(3) {
-                    grid-column: span 1;
-                    grid-row: span 2;
-                    grid-area: card3;
-                }
-
-                &:nth-child(4) {
-                    grid-column: span 1;
-                    grid-row: span 2;
-                    grid-area: card4;
-                }
-
-                &:nth-child(5) {
-                    grid-column: span 2;
-                    grid-row: span 2;
-                    grid-area: card5;
-                    background-image: url("../img/Background_5.png");
-                }
-            }
-
-            @include responsive(1024px) {
-                grid-template-columns: repeat(4, 1fr);
-                grid-template-rows: repeat(3, 1fr);
-                grid-template-areas:
-                    "card1 card1 card3 card4"
-                    "card1 card1 card3 card4"
-                    "card2 card2 card5 card5";
-            }
-
-            @include responsive(800px) {
-                grid-template-areas:
-                    "card1 card1 card1 card1"
-                    "card3 card3 card4 card4"
-                    "card2 card2 card5 card5";
-            }
-
-            @include responsive(360px) {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(3, 1fr);
-                grid-template-areas:
-                    "card1"
-                    "card2"
-                    "card5";
-            }
-        }
-    }
-
-    .card-header {
-        display: flex;
-        align-items: start;
-        justify-content: space-between;
-        padding-inline: 12px;
-        padding-block: 12px 23px;
-
-        &__title {
-            font-size: clamp(16px, 1.39vw, 20px);
-            font-weight: 600;
-            text-align: left;
-        }
-
-        &__actions {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-
-            & img {
-                width: 19px;
-                height: 19px;
-
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-        }
-    }
-
-    .card-main {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
-        padding-inline: 12px;
-        padding-block: 15px 12px;
-
-        &__tags {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            gap: 4px;
-        }
-
-        &__tag {
-            font-size: 12px;
-            font-weight: 600;
-            border-radius: 50px;
-            color: white;
-            padding: 4px 11px;
-            white-space: nowrap;
-        }
-
-        &__button {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-
-            .price {
-                font-size: 20px;
-                font-weight: 700;
-                white-space: nowrap;
-            }
-
-            .button {
-                font-size: 14px;
-                font-weight: 700;
-                color: white;
-                background: $color-green;
-                padding: 8px clamp(8px, 1.39vw, 12px);
-                border-radius: 5px;
-            }
-
-            &:hover {
-                cursor: pointer;
-            }
-
-            @include responsive(600px) {
-                flex-direction: column;
-                align-items: start;
-            }
-        }
-
-        @include responsive(1300px) {
-            flex-direction: column;
-            align-items: start;
-            gap: 10px;
-        }
-
-        @include responsive(1024px) {
-            gap: 5px;
-        }
-    }
-
-    .small-discount {
-        background: $color-green;
-    }
-
-    .day-product {
-        background: $color-yellow;
-    }
-
-    .big-discount {
-        background: $color-pink;
-    }
-
-    .hit {
-        background: $color-purple;
-    }
-
-    .sale {
-        background: $color-blue;
-    }
 }
 
-.card {
-    &--three {
-        .card-header {
-            background-image: url("../img/Background_3.png");
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            height: 100%;
+.parent {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    height: 100%;
 
-            &__title {
-                font-size: 14px;
-                text-align: left;
-            }
+    @include responsive(1024px) {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    @media (max-width: 360px) {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+    }
+
+    .card {
+        width: auto;
+        height: auto;
+        background: #000;
+        color: #fff;
+        text-align: center;
+    }
+
+    .card--one {
+        grid-column: span 2 / span 2;
+        grid-row: span 2 / span 2;
+
+        @include responsive(1024px) {
+            grid-column: span 2 / span 2;
+            grid-row: span 2 / span 2;
         }
 
-        .card-main {
-            background-color: $color-white;
-            color: $color-gray;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            .price {
-                font-size: 20px;
-                font-weight: 700;
-                margin: 10px 0;
-            }
-
-            &__button {
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-                white-space: nowrap;
-            }
+        @media (max-width: 360px) {
+            grid-row: span 2 / span 2;
+            grid-column: span 1;
         }
     }
 
-    &--four {
-        .card-header {
-            background-image: url("../img/Background_4.png");
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            height: 100%;
+    .card--two {
+        grid-column: span 2 / span 2;
+        grid-column-start: 3;
 
-            &__title {
-                font-size: 14px;
-                text-align: left;
-            }
+        @include responsive(1024px) {
+            grid-row: span 2 / span 2;
+            grid-column: 3;
         }
 
-        .card-main {
-            background-color: $color-white;
-            color: $color-gray;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            .price {
-                font-size: 20px;
-                font-weight: 700;
-                margin: 10px 0;
-            }
-
-            &__button {
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-                white-space: nowrap;
-            }
+        @media (max-width: 360px) {
+            grid-column: span 1;
+            grid-row-start: 3;
         }
     }
 
-    @include responsive(360px) {
-        display: none;
+    .card--three {
+        grid-column: span 2 / span 2;
+        grid-column-start: 3;
+        grid-row-start: 2;
+
+        @include responsive(1024px) {
+            grid-row: span 2 / span 2;
+            grid-column: 4;
+        }
+
+        @media (max-width: 360px) {
+            grid-column: span 1;
+            grid-row-start: 5;
+        }
+    }
+
+    .card--four {
+        grid-row: span 2 / span 2;
+        grid-column-start: 5;
+        grid-row-start: 1;
+
+        @include responsive(1024px) {
+            grid-column: span 2 / span 2;
+            grid-row-start: 3;
+        }
+
+        @media (max-width: 360px) {
+            display: none;
+        }
+    }
+
+    .card--five {
+        grid-row: span 2 / span 2;
+        grid-column-start: 6;
+        grid-row-start: 1;
+
+        @include responsive(1024px) {
+            grid-column: span 2 / span 2;
+            grid-column-start: 3;
+            grid-row-start: 3;
+        }
+
+        @media (max-width: 360px) {
+            display: none;
+        }
     }
 }
 
@@ -492,4 +322,55 @@ body.no-scroll {
 .error-message {
     color: red;
     font-size: 10px;
+}
+
+// Слайдер
+
+.mySwiper {
+    display: block;
+    grid-row-start: 5;
+    @include responsive(361px) {
+        display: none;
+        grid-row: inherit;
+    }
+}
+
+.swiper {
+    width: 60%;
+    height: 100%;
+}
+
+.swiper-wrapper {
+    @include responsive(361px) {
+        display: none;
+    }
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-slide {
+    width: 60%;
+    padding: 20px;
+}
+
+.swiper-slide:first-child {
+    width: 40%;
+}
+
+.swiper-slide:last-child {
+    width: 40%;
 }

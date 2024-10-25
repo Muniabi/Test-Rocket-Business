@@ -146,7 +146,7 @@ $color-black: rgba(0, 0, 0, 1);
         grid-template-rows: repeat(3, 1fr);
     }
 
-    @media (max-width: 360px) {
+    @include responsive(360px) {
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(6, 1fr);
     }
@@ -168,7 +168,7 @@ $color-black: rgba(0, 0, 0, 1);
             grid-row: span 2 / span 2;
         }
 
-        @media (max-width: 360px) {
+        @include responsive(360px) {
             grid-row: span 2 / span 2;
             grid-column: span 1;
         }
@@ -183,7 +183,7 @@ $color-black: rgba(0, 0, 0, 1);
             grid-column: 3;
         }
 
-        @media (max-width: 360px) {
+        @include responsive(360px) {
             grid-column: span 1;
             grid-row-start: 3;
         }
@@ -199,7 +199,7 @@ $color-black: rgba(0, 0, 0, 1);
             grid-column: 4;
         }
 
-        @media (max-width: 360px) {
+        @include responsive(360px) {
             grid-column: span 1;
             grid-row-start: 5;
         }
@@ -215,7 +215,7 @@ $color-black: rgba(0, 0, 0, 1);
             grid-row-start: 3;
         }
 
-        @media (max-width: 360px) {
+        @include responsive(360px) {
             display: none;
         }
     }
@@ -231,7 +231,7 @@ $color-black: rgba(0, 0, 0, 1);
             grid-row-start: 3;
         }
 
-        @media (max-width: 360px) {
+        @include responsive(360px) {
             display: none;
         }
     }

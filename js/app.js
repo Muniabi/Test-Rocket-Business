@@ -1,3 +1,4 @@
+// video player
 document
     .querySelector(".header__button")
     .addEventListener("click", function () {
@@ -9,48 +10,95 @@ document
         preview.style.display = "none";
     });
 
+// popup
 document.addEventListener("DOMContentLoaded", () => {
     const popupOverlay = document.getElementById("popup-overlay");
     const popupClose = document.getElementById("popup-close");
     const buttons = document.querySelectorAll(".button.btn");
     const popupForm = document.getElementById("popup-form");
 
-    // Открытие pop-up
+    const togglePopup = (show) => {
+        popupOverlay.style.display = show ? "flex" : "none";
+        document.body.classList.toggle("no-scroll", show);
+    };
+
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
-            popupOverlay.style.display = "flex";
-            document.body.classList.add("no-scroll");
+            togglePopup(true);
         });
     });
 
-    // Закрытие pop-up
     popupClose.addEventListener("click", () => {
-        popupOverlay.style.display = "none";
-        document.body.classList.remove("no-scroll");
+        togglePopup(false);
     });
 
-    // Закрытие pop-up при клике на область
     popupOverlay.addEventListener("click", (e) => {
         if (e.target === popupOverlay) {
-            popupOverlay.style.display = "none";
-            document.body.classList.remove("no-scroll");
+            togglePopup(false);
         }
     });
 
-    // Валидация и отправка формы
     popupForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        // Проверяем, что все обязательные поля заполнены
-        const name = document.getElementById("name").value;
-        const phone = document.getElementById("phone").value;
-        const agree = document.getElementById("agree").checked;
+        const name = document.getElementById("name");
+        const phone = document.getElementById("phone");
+        const agree = document.getElementById("agree");
 
-        if (name && phone && agree) {
+        const nameError = document.querySelector("#name + p");
+        const phoneError = document.querySelector("#phone + p");
+        const agreeError = document.querySelector(".popup-bottom p");
+
+        phone.addEventListener("input", () => {
+            const phoneValue = phone.value.replace(/\D+/g, "");
+            const formattedPhoneValue = `+7 (${phoneValue.substring(
+                0,
+                3
+            )})-${phoneValue.substring(3, 6)}-${phoneValue.substring(
+                6,
+                8
+            )}-${phoneValue.substring(8, 10)}`;
+            phone.value = formattedPhoneValue;
+        });
+
+        if (
+            name.value &&
+            phone.value &&
+            phone.value.match(/^\d{10}$/) &&
+            agree.checked
+        ) {
             alert("Заявка отправлена!");
-            popupOverlay.style.display = "none";
-            document.body.classList.remove("no-scroll");
+            togglePopup(false);
         } else {
-            alert("Заполните все поля и примите условия обработки данных.");
+            if (!name.value) {
+                name.classList.add("error");
+                nameError.classList.add("error-message");
+                nameError.textContent = "Поле не заполнено";
+            } else {
+                name.classList.remove("error");
+                nameError.classList.remove("error-message");
+                nameError.textContent = "";
+            }
+
+            if (!phone.value) {
+                phone.classList.add("error");
+                phoneError.textContent = "Поле не заполнено";
+            } else if (
+                !phone.value.match(/^\+7 \(\d{3}\)-\d{3}-\d{2}-\d{2}$/)
+            ) {
+                phone.classList.add("error");
+                phoneError.textContent = "Некорректный номер";
+            } else {
+                phone.classList.remove("error");
+                phoneError.textContent = "";
+            }
+
+            if (!agree.checked) {
+                agree.classList.add("error");
+                agreeError.textContent = "Необходимо согласие";
+            } else {
+                agree.classList.remove("error");
+                agreeError.textContent = "";
+            }
         }
     });
 });

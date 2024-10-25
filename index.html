@@ -38,128 +38,9 @@
         </header>
 
         <main class="main">
-            <div class="container cards-block">
-                <!-- 1 card -->
-                <div class="cards-block__card card">
-                    <div class="card-header">
-                        <div class="card-header__title">
-                            Горох в стручках, 1 кг
-                        </div>
-                        <div class="card-header__actions">
-                            <img src="/img/Like.svg" alt="Like" />
-                            <img src="/img/Eye.svg" alt="Eye" />
-                        </div>
-                    </div>
-                    <div class="card-main">
-                        <div class="card-main__tags">
-                            <div class="card-main__tag small-discount">
-                                - 29%
-                            </div>
-                            <div class="card-main__tag day-product">
-                                Товар дня
-                            </div>
-                        </div>
-                        <div class="card-main__button">
-                            <p class="price">570 ₽</p>
-                            <button class="button btn">Оставить заявку</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- 2 card -->
-                <div class="cards-block__card card">
-                    <div class="card-header">
-                        <div class="card-header__title">
-                            Голубика лесная, 200 г
-                        </div>
-                        <div class="card-header__actions">
-                            <img src="/img/Like.svg" alt="Like" />
-                            <img src="/img/Eye.svg" alt="Eye" />
-                        </div>
-                    </div>
-                    <div class="card-main">
-                        <div class="card-main__tags">
-                            <div class="card-main__tag big-discount">- 31%</div>
-                            <div class="card-main__tag sale">Распродажа</div>
-                        </div>
-                        <div class="card-main__button">
-                            <p class="price">570 ₽</p>
-                            <button class="button btn">Оставить заявку</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- 3 card -->
-                <div class="cards-block__card card card--three">
-                    <div class="card-header">
-                        <div class="card-main__tags">
-                            <div class="card-main__tag small-discount">
-                                - 29%
-                            </div>
-                            <div class="card-main__tag day-product">
-                                Товар дня
-                            </div>
-                        </div>
-
-                        <div class="card-header__actions">
-                            <img src="/img/Like.svg" alt="Like" />
-                            <img src="/img/Eye.svg" alt="Eye" />
-                        </div>
-                    </div>
-                    <div class="card-main">
-                        <div class="card-header__title">
-                            Попкорн солёный, для СВЧ-печи, 120 г
-                        </div>
-                        <div class="card-main__button">
-                            <p class="price">160 ₽</p>
-                            <button class="button btn">Оставить заявку</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- 4 card -->
-                <div class="cards-block__card card card--four">
-                    <div class="card-header">
-                        <div class="card-main__tags">
-                            <div class="card-main__tag hit">Хит</div>
-                        </div>
-                        <div class="card-header__actions">
-                            <img src="/img/Like.svg" alt="Like" />
-                            <img src="/img/Eye.svg" alt="Eye" />
-                        </div>
-                    </div>
-                    <div class="card-main">
-                        <div class="card-header__title">
-                            Эскимо с малиной, 150 г
-                        </div>
-                        <div class="card-main__button">
-                            <p class="price">190 ₽</p>
-                            <button class="button btn">Оставить заявку</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- 5 card -->
-                <div class="cards-block__card card">
-                    <div class="card-header">
-                        <div class="card-header__title">
-                            Капуста белокочанная, 1 шт
-                        </div>
-                        <div class="card-header__actions">
-                            <img src="/img/Like.svg" alt="Like" />
-                            <img src="/img/Eye.svg" alt="Eye" />
-                        </div>
-                    </div>
-                    <div class="card-main">
-                        <div class="card-main__tags">
-                            <div class="card-main__tag small-discount">
-                                - 10%
-                            </div>
-                        </div>
-                        <div class="card-main__button">
-                            <p class="price">230 ₽</p>
-                            <button class="button btn">Оставить заявку</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </main>
+        <!-- popup -->
         <div class="popup-overlay" id="popup-overlay">
             <div class="popup">
                 <div class="popup-header">
@@ -172,20 +53,23 @@
                         class="popup-input"
                         id="name"
                         placeholder="Ваше имя *"
-                        required
                     />
+                    <p></p>
+
                     <input
                         type="tel"
                         class="popup-input"
                         id="phone"
                         placeholder="Ваш номер телефона *"
-                        required
                     />
+                    <p></p>
+
                     <div class="popup-bottom">
                         <label class="popup-checkbox">
                             <input type="checkbox" id="agree" required />
                             Я соглашаюсь на обработку персональных данных
                         </label>
+                        <p></p>
                         <button type="submit" class="popup-button btn">
                             Отправить
                         </button>

@@ -311,6 +311,28 @@ $color-black: rgba(0, 0, 0, 1);
         }
 
         .card-footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+
+            .card-footer__actions {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+
+                .price {
+                    color: rgba(68, 68, 68, 1);
+                }
+            }
+
+            .card-header__title {
+                color: rgba(68, 68, 68, 1);
+                font-size: 17px;
+                text-align: left;
+            }
         }
     }
 
@@ -334,6 +356,28 @@ $color-black: rgba(0, 0, 0, 1);
         }
 
         .card-footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+
+            .card-footer__actions {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+
+                .price {
+                    color: rgba(68, 68, 68, 1);
+                }
+            }
+
+            .card-header__title {
+                color: rgba(68, 68, 68, 1);
+                font-size: 17px;
+                text-align: left;
+            }
         }
     }
 
@@ -341,19 +385,42 @@ $color-black: rgba(0, 0, 0, 1);
         display: none;
         grid-row-start: 5;
         height: 450px;
-        width: auto;
+        width: 110%;
+
         @include responsive(360px) {
             display: block;
         }
 
-        .slide {
-            height: 100%;
-            width: 100%;
-            display: block;
+        .swiper-wrapper {
+            width: 75%;
         }
 
-        .swiper-pagination {
-            margin-bottom: -30px;
+        .slide {
+            width: 100%;
+            display: block;
+
+            .card-footer {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding-block: 15px;
+                gap: 40px;
+                align-items: center;
+
+                .card-header__title {
+                    font-size: 17px;
+                    text-align: left;
+                    color: rgba(68, 68, 68, 1);
+                }
+
+                .card-footer__actions {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                    color: rgba(68, 68, 68, 1);
+                }
+            }
         }
     }
 }
@@ -410,6 +477,12 @@ $color-black: rgba(0, 0, 0, 1);
     margin-bottom: 20px;
 }
 
+.popup-form {
+    p {
+        padding-block: 5px;
+    }
+}
+
 .popup-title {
     font-size: 20px;
     font-weight: 600;
@@ -426,7 +499,6 @@ $color-black: rgba(0, 0, 0, 1);
 .popup-input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
@@ -490,7 +562,6 @@ body.no-scroll {
         display: flex;
     }
     .card {
-        position: relative;
         height: 100%;
         background: #fff;
         color: #fff;

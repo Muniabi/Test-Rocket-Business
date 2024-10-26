@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const agree = document.getElementById("agree");
 
         const nameError = document.querySelector("#name + p");
-        const phoneError = document.querySelector("#phone + p");
-        const agreeError = document.querySelector(".popup-bottom p");
+        const phoneInput = document.querySelector("#phone");
+        const phoneError = document.querySelector("#phone-error");
 
         phone.addEventListener("input", () => {
             const phoneValue = phone.value.replace(/\D+/g, "");
@@ -57,9 +57,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 6,
                 8
             )}-${phoneValue.substring(8, 10)}`;
+            if (phoneValue.length < 10) {
+                phoneError.textContent =
+                    "Номер телефона должен содержать минимум 10 цифр";
+                phoneInput.classList.add("error");
+            } else {
+                phoneError.textContent = "";
+                phoneInput.classList.remove("error");
+            }
             phone.value = formattedPhoneValue;
         });
-
         if (
             name.value &&
             phone.value &&
@@ -100,7 +107,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 agreeError.textContent = "";
             }
         }
+        const form = document.querySelector("#popup-form");
+        form.addEventListener("submit", function (event) {
+            if (phoneError.textContent !== "") {
+                event.preventDefault(); // Предотвращаем отправку формы, если есть ошибка
+            }
+        });
     });
+
+    // Валидация формы при отправке
 });
 
 const swiper = new Swiper(".mySwiper", {

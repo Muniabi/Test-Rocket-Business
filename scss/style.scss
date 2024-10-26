@@ -201,9 +201,14 @@ $color-black: rgba(0, 0, 0, 1);
             display: flex;
             justify-content: space-between;
             align-items: end;
+            flex-wrap: wrap;
             bottom: 0;
             border-radius: 0 0 5px 5px;
             padding: 12px 10px;
+
+            @include responsive(360px) {
+                flex-wrap: nowrap;
+            }
 
             &__tags {
                 display: flex;
@@ -238,16 +243,16 @@ $color-black: rgba(0, 0, 0, 1);
         grid-row: span 2 / span 2;
 
         background: url("/img/Background_1.png") no-repeat center / cover;
-        aspect-ratio: 387 / 328;
+        aspect-ratio: auto;
 
         @include responsive(1024px) {
-            aspect-ratio: 382 / 328;
+            grid-column: span 2 / span 2;
+            grid-row: span 2 / span 2;
         }
 
         @include responsive(360px) {
             grid-row: span 2 / span 2;
             grid-column: span 1;
-            aspect-ratio: auto;
         }
     }
 
@@ -255,18 +260,16 @@ $color-black: rgba(0, 0, 0, 1);
         grid-column: span 2 / span 2;
         grid-column-start: 3;
         background: url("/img/Background_2.png") no-repeat center / cover;
-        aspect-ratio: 387 / 154;
+        aspect-ratio: auto;
 
         @include responsive(1024px) {
             grid-column: span 2 / span 2;
             grid-row: 3;
-            aspect-ratio: 382 / 154;
         }
 
         @include responsive(360px) {
             grid-column: span 1;
             grid-row: 3;
-            aspect-ratio: 328 / 175;
         }
     }
 
@@ -276,19 +279,17 @@ $color-black: rgba(0, 0, 0, 1);
         grid-row-start: 2;
 
         background: url("/img/Background_3.png") no-repeat center / cover;
-        aspect-ratio: 387 / 154;
+        aspect-ratio: auto;
 
         @include responsive(1024px) {
             grid-column: span 2 / span 2;
             grid-column-start: 3;
             grid-row: 3;
-            aspect-ratio: 382 / 154;
         }
 
         @include responsive(360px) {
             grid-column: span 1;
             grid-row: 4;
-            aspect-ratio: 328 / 175;
         }
     }
 

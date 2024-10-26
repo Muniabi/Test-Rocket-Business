@@ -38,84 +38,81 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    popupForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const name = document.getElementById("name");
-        const phone = document.getElementById("phone");
-        const agree = document.getElementById("agree");
+    const phoneInput = document.getElementById("phone");
+    const phoneError = document.getElementById("phone-error");
 
-        const nameError = document.querySelector("#name + p");
-        const phoneInput = document.querySelector("#phone");
-        const phoneError = document.querySelector("#phone-error");
+    // Функция форматирования номера телефона
+    const formatPhone = (value) => {
+        // Убираем все нецифровые символы
+        const phoneValue = value.replace(/\D+/g, "");
 
-        phone.addEventListener("input", () => {
-            const phoneValue = phone.value.replace(/\D+/g, "");
-            const formattedPhoneValue = `+7 (${phoneValue.substring(
-                0,
-                3
-            )})-${phoneValue.substring(3, 6)}-${phoneValue.substring(
-                6,
-                8
-            )}-${phoneValue.substring(8, 10)}`;
-            if (phoneValue.length < 10) {
-                phoneError.textContent =
-                    "Номер телефона должен содержать минимум 10 цифр";
-                phoneInput.classList.add("error");
-            } else {
-                phoneError.textContent = "";
-                phoneInput.classList.remove("error");
-            }
-            phone.value = formattedPhoneValue;
-        });
-        if (
-            name.value &&
-            phone.value &&
-            phone.value.match(/^\d{10}$/) &&
-            agree.checked
-        ) {
-            alert("Заявка отправлена!");
-            togglePopup(false);
-        } else {
-            if (!name.value) {
-                name.classList.add("error");
-                nameError.classList.add("error-message");
-                nameError.textContent = "Поле не заполнено";
-            } else {
-                name.classList.remove("error");
-                nameError.classList.remove("error-message");
-                nameError.textContent = "";
-            }
+        // Если ничего не введено, возвращаем пустую строку
+        if (phoneValue.length === 0) return "";
 
-            if (!phone.value) {
-                phone.classList.add("error");
-                phoneError.textContent = "Поле не заполнено";
-            } else if (
-                !phone.value.match(/^\+7 \(\d{3}\)-\d{3}-\d{2}-\d{2}$/)
-            ) {
-                phone.classList.add("error");
-                phoneError.textContent = "Некорректный номер";
-            } else {
-                phone.classList.remove("error");
-                phoneError.textContent = "";
-            }
+        // Если вводится первая цифра, добавляем только +7
+        if (phoneValue.length === 1) return "+7 ";
 
-            if (!agree.checked) {
-                agree.classList.add("error");
-                agreeError.textContent = "Необходимо согласие";
-            } else {
-                agree.classList.remove("error");
-                agreeError.textContent = "";
-            }
-        }
-        const form = document.querySelector("#popup-form");
-        form.addEventListener("submit", function (event) {
-            if (phoneError.textContent !== "") {
-                event.preventDefault(); // Предотвращаем отправку формы, если есть ошибка
-            }
-        });
+        // Если введено более одной цифры, формируем номер
+        const formattedPhone = `+7 ${phoneValue.slice(1)}`;
+
+        const match = formattedPhone.match(
+            /^(\+7)\s(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/
+        );
+        if (!match) return formattedPhone;
+
+        return `${match[1]} ${match[2]}${match[3] ? " " + match[3] : ""}${
+            match[4] ? " " + match[4] : ""
+        }${match[5] ? " " + match[5] : ""}`;
+    };
+
+    phoneInput.addEventListener("input", () => {
+        // Форматируем ввод
+        phoneInput.value = formatPhone(phoneInput.value);
     });
 
-    // Валидация формы при отправке
+    popupForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("name");
+        const agree = document.getElementById("agree");
+        const nameError = document.getElementById("name-error");
+        const agreeError = document.getElementById("agree-error");
+
+        // Сброс ошибок перед валидацией
+        nameError.textContent = "";
+        phoneError.textContent = "";
+        agreeError.textContent = "";
+        name.classList.remove("error");
+        phoneInput.classList.remove("error");
+        agree.classList.remove("error");
+
+        // Валидация имени
+        if (!name.value) {
+            name.classList.add("error");
+            nameError.textContent = "Поле не заполнено";
+        }
+
+        // Проверяем номер телефона
+        const phoneValue = phoneInput.value.replace(/\D+/g, "");
+        if (phoneValue.length < 11) {
+            phoneInput.classList.add("error");
+            phoneError.textContent = "Номер телефона должен содержать 11 цифр";
+        }
+
+        // Валидация согласия
+        if (!agree.checked) {
+            agree.classList.add("error");
+            agreeError.textContent = "Необходимо согласие";
+        }
+
+        // Если все поля заполнены правильно, отправляем заявку
+        if (name.value && phoneValue.length === 11 && agree.checked) {
+            alert("Заявка отправлена!");
+            togglePopup(false);
+            popupForm.reset(); // Сбрасываем форму
+            phoneInput.value = ""; // Сбрасываем значение телефона к началу
+        }
+    });
 });
 
 const swiper = new Swiper(".mySwiper", {

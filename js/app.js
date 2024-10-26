@@ -43,16 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Функция форматирования номера телефона
     const formatPhone = (value) => {
-        // Убираем все нецифровые символы
         const phoneValue = value.replace(/\D+/g, "");
 
-        // Если ничего не введено, возвращаем пустую строку
         if (phoneValue.length === 0) return "";
 
-        // Если вводится первая цифра, добавляем только +7
         if (phoneValue.length === 1) return "+7 ";
 
-        // Если введено более одной цифры, формируем номер
         const formattedPhone = `+7 ${phoneValue.slice(1)}`;
 
         const match = formattedPhone.match(
@@ -66,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     phoneInput.addEventListener("input", () => {
-        // Форматируем ввод
         phoneInput.value = formatPhone(phoneInput.value);
     });
 
@@ -107,10 +102,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Если все поля заполнены правильно, отправляем заявку
         if (name.value && phoneValue.length === 11 && agree.checked) {
-            alert("Заявка отправлена!");
-            togglePopup(false);
-            popupForm.reset(); // Сбрасываем форму
-            phoneInput.value = ""; // Сбрасываем значение телефона к началу
+            const formData = new FormData(popupForm); // Создаем объект FormData для отправки данных
+
+            fetch("../send_mail.php", {
+                method: "POST",
+                body: formData, // Отправляем данные формы на PHP
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.errors) {
+                        // Если есть ошибки, выводим их
+                        for (const [key, value] of Object.entries(
+                            data.errors
+                        )) {
+                            if (key === "name") {
+                                name.classList.add("error");
+                                nameError.textContent = value;
+                            } else if (key === "phone") {
+                                phoneInput.classList.add("error");
+                                phoneError.textContent = value;
+                            } else if (key === "agree") {
+                                agree.classList.add("error");
+                                agreeError.textContent = value;
+                            }
+                        }
+                    } else {
+                        // Успешная отправка
+                        alert(data);
+                        togglePopup(false);
+                        popupForm.reset(); // Сбрасываем форму
+                        phoneInput.value = ""; // Сбрасываем значение телефона к началу
+                    }
+                })
+                .catch((error) => {
+                    console.error("Ошибка:", error);
+                    alert("Произошла ошибка при отправке формы.");
+                });
         }
     });
 });

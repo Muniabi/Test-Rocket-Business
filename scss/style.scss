@@ -146,7 +146,7 @@ $color-black: rgba(0, 0, 0, 1);
         grid-template-rows: repeat(3, 1fr);
     }
 
-    @include responsive(360px) {
+    @include responsive(400px) {
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(4, 1fr);
     }
@@ -193,7 +193,7 @@ $color-black: rgba(0, 0, 0, 1);
             }
         }
 
-        @include responsive(360px) {
+        @include responsive(400px) {
             height: auto;
         }
 
@@ -206,7 +206,7 @@ $color-black: rgba(0, 0, 0, 1);
             border-radius: 0 0 5px 5px;
             padding: 12px 10px;
 
-            @include responsive(360px) {
+            @include responsive(400px) {
                 flex-wrap: nowrap;
             }
 
@@ -250,7 +250,7 @@ $color-black: rgba(0, 0, 0, 1);
             grid-row: span 2 / span 2;
         }
 
-        @include responsive(360px) {
+        @include responsive(400px) {
             grid-row: span 2 / span 2;
             grid-column: span 1;
         }
@@ -267,7 +267,7 @@ $color-black: rgba(0, 0, 0, 1);
             grid-row: 3;
         }
 
-        @include responsive(360px) {
+        @include responsive(400px) {
             grid-column: span 1;
             grid-row: 3;
         }
@@ -287,7 +287,7 @@ $color-black: rgba(0, 0, 0, 1);
             grid-row: 3;
         }
 
-        @include responsive(360px) {
+        @include responsive(400px) {
             grid-column: span 1;
             grid-row: 4;
         }
@@ -302,7 +302,7 @@ $color-black: rgba(0, 0, 0, 1);
             grid-column: 3;
         }
 
-        @include responsive(360px) {
+        @include responsive(400px) {
             display: none;
         }
 
@@ -347,7 +347,7 @@ $color-black: rgba(0, 0, 0, 1);
             grid-column: 4;
         }
 
-        @include responsive(360px) {
+        @include responsive(400px) {
             display: none;
         }
 
@@ -388,7 +388,7 @@ $color-black: rgba(0, 0, 0, 1);
         height: 450px;
         width: 110%;
 
-        @include responsive(360px) {
+        @include responsive(400px) {
             display: block;
         }
 
@@ -559,7 +559,7 @@ body.no-scroll {
     align-items: center;
     background: #fff;
 
-    @include responsive(360px) {
+    @include responsive(400px) {
         display: flex;
     }
     .card {
@@ -597,7 +597,7 @@ body.no-scroll {
             }
         }
 
-        @include responsive(360px) {
+        @include responsive(400px) {
             height: auto;
         }
 
@@ -646,7 +646,7 @@ body.no-scroll {
             grid-column: 3;
         }
 
-        @include responsive(360px) {
+        @include responsive(400px) {
         }
 
         .card-header {
@@ -668,7 +668,7 @@ body.no-scroll {
             grid-column: 4;
         }
 
-        @include responsive(360px) {
+        @include responsive(400px) {
         }
 
         .card-header {

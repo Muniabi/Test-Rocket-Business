@@ -14,7 +14,7 @@ document
 document.addEventListener("DOMContentLoaded", () => {
     const popupOverlay = document.getElementById("popup-overlay");
     const popupClose = document.getElementById("popup-close");
-    const buttons = document.querySelectorAll(".button.btn");
+    const buttons = document.querySelectorAll(".btn");
     const popupForm = document.getElementById("popup-form");
 
     const togglePopup = (show) => {
@@ -106,18 +106,9 @@ document.addEventListener("DOMContentLoaded", () => {
 const swiper = new Swiper(".mySwiper", {
     slidesPerView: "auto",
     centeredSlides: true,
-    spaceBetween: 30,
+    spaceBetween: 20,
     pagination: {
         el: ".swiper-pagination",
         clickable: true,
-    },
-    breakpoints: {
-        360: {
-            centeredSlides: true,
-        },
-        361: {
-            centeredSlides: false,
-            // display: "none",
-        },
     },
 });

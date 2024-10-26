@@ -39,7 +39,7 @@ $color-black: rgba(0, 0, 0, 1);
     cursor: pointer;
     background: linear-gradient(145deg, #24c06e, #1ba35a);
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 10px 15px;
     color: white;
     font-weight: bold;
     transition: all 0.4s ease;
@@ -148,44 +148,125 @@ $color-black: rgba(0, 0, 0, 1);
 
     @include responsive(360px) {
         grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(6, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    .card-alternate {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .card {
-        width: auto;
-        height: auto;
-        background: #000;
+        position: relative;
+        height: 100%;
+        background: #fff;
         color: #fff;
         text-align: center;
+        border-radius: 5px;
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            padding: 12px;
+            border-radius: 5px 5px 0 0;
+
+            &__title {
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            .actions {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                &--img {
+                    aspect-ratio: 1;
+                    cursor: pointer;
+
+                    &:hover path {
+                        fill: #ff0000;
+                    }
+                }
+            }
+        }
+
+        @include responsive(360px) {
+            height: auto;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            bottom: 0;
+            border-radius: 0 0 5px 5px;
+            padding: 12px 10px;
+
+            &__tags {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 6px;
+                font-size: 12px;
+                font-weight: 600;
+
+                .tag {
+                    padding: 4px 11px;
+                    border-radius: 50px;
+                }
+            }
+
+            &__actions {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            &__button {
+                font-size: 12px;
+            }
+        }
     }
 
     .card--one {
         grid-column: span 2 / span 2;
         grid-row: span 2 / span 2;
 
+        background: url("/img/Background_1.png") no-repeat center / cover;
+        aspect-ratio: 387 / 328;
+
         @include responsive(1024px) {
-            grid-column: span 2 / span 2;
-            grid-row: span 2 / span 2;
+            aspect-ratio: 382 / 328;
         }
 
         @include responsive(360px) {
             grid-row: span 2 / span 2;
             grid-column: span 1;
+            aspect-ratio: auto;
         }
     }
 
     .card--two {
         grid-column: span 2 / span 2;
         grid-column-start: 3;
+        background: url("/img/Background_2.png") no-repeat center / cover;
+        aspect-ratio: 387 / 154;
 
         @include responsive(1024px) {
-            grid-row: span 2 / span 2;
-            grid-column: 3;
+            grid-column: span 2 / span 2;
+            grid-row: 3;
+            aspect-ratio: 382 / 154;
         }
 
         @include responsive(360px) {
             grid-column: span 1;
             grid-row: 3;
+            aspect-ratio: 328 / 175;
         }
     }
 
@@ -194,14 +275,20 @@ $color-black: rgba(0, 0, 0, 1);
         grid-column-start: 3;
         grid-row-start: 2;
 
+        background: url("/img/Background_3.png") no-repeat center / cover;
+        aspect-ratio: 387 / 154;
+
         @include responsive(1024px) {
-            grid-row: span 2 / span 2;
-            grid-column: 4;
+            grid-column: span 2 / span 2;
+            grid-column-start: 3;
+            grid-row: 3;
+            aspect-ratio: 382 / 154;
         }
 
         @include responsive(360px) {
             grid-column: span 1;
             grid-row: 4;
+            aspect-ratio: 328 / 175;
         }
     }
 
@@ -211,12 +298,19 @@ $color-black: rgba(0, 0, 0, 1);
         grid-row-start: 1;
 
         @include responsive(1024px) {
-            grid-column: span 2 / span 2;
-            grid-row: 3;
+            grid-column: 3;
         }
 
         @include responsive(360px) {
             display: none;
+        }
+
+        .card-header {
+            background: url("/img/Background_4.png") no-repeat center / cover;
+            aspect-ratio: 183 / 183;
+        }
+
+        .card-footer {
         }
     }
 
@@ -226,18 +320,65 @@ $color-black: rgba(0, 0, 0, 1);
         grid-row-start: 1;
 
         @include responsive(1024px) {
-            grid-column: span 2 / span 2;
-            grid-column-start: 3;
-            grid-row: 3;
+            grid-row: span 2 / span 2;
+            grid-column: 4;
         }
 
         @include responsive(360px) {
             display: none;
         }
+
+        .card-header {
+            background: url("/img/Background_5.png") no-repeat center / cover;
+            aspect-ratio: 183 / 183;
+        }
+
+        .card-footer {
+        }
+    }
+
+    .mySwiper {
+        display: none;
+        grid-row-start: 5;
+        height: 450px;
+        width: auto;
+        @include responsive(360px) {
+            display: block;
+        }
+
+        .slide {
+            height: 100%;
+            width: 100%;
+            display: block;
+        }
+
+        .swiper-pagination {
+            margin-bottom: -30px;
+        }
     }
 }
 
-/* Общие стили pop-up */
+.day-product {
+    background: rgba(255, 167, 38, 1);
+}
+
+.discount {
+    background: rgba(24, 197, 118, 1);
+}
+
+.hit {
+    background: rgba(172, 89, 241, 1);
+}
+
+.big-discount {
+    background: rgba(255, 91, 198, 1);
+}
+
+.sale {
+    background: rgba(57, 176, 244, 1);
+}
+
+/* pop-up */
 .popup-overlay {
     display: none;
     position: fixed;
@@ -326,33 +467,146 @@ body.no-scroll {
 
 // Слайдер
 
-.mySwiper {
-    display: block;
-    grid-row-start: 5;
-    @include responsive(361px) {
-        display: none;
-        grid-row: inherit;
-    }
-}
-
 .swiper {
-    width: 60%;
-    height: 100%;
+    margin-top: 20px;
 }
 
 .swiper-wrapper {
+    margin-bottom: 40px;
     @include responsive(361px) {
         display: none;
     }
 }
 
 .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: flex;
+    width: 80%;
+    height: 100%;
+    display: none;
     justify-content: center;
     align-items: center;
+    background: #fff;
+
+    @include responsive(360px) {
+        display: flex;
+    }
+    .card {
+        position: relative;
+        height: 100%;
+        background: #fff;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            padding: 12px;
+            border-radius: 5px 5px 0 0;
+
+            &__title {
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            .actions {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                &--img {
+                    aspect-ratio: 1;
+                    cursor: pointer;
+
+                    &:hover path {
+                        fill: #ff0000;
+                    }
+                }
+            }
+        }
+
+        @include responsive(360px) {
+            height: auto;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            bottom: 0;
+            border-radius: 0 0 5px 5px;
+            padding: 12px 10px;
+
+            &__tags {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 6px;
+                font-size: 12px;
+                font-weight: 600;
+
+                .tag {
+                    padding: 4px 11px;
+                    border-radius: 50px;
+                }
+            }
+
+            &__actions {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            &__button {
+                font-size: 12px;
+            }
+        }
+    }
+
+    .card--four {
+        grid-row: span 2 / span 2;
+        grid-column-start: 5;
+        grid-row-start: 1;
+
+        @include responsive(1024px) {
+            grid-column: 3;
+        }
+
+        @include responsive(360px) {
+        }
+
+        .card-header {
+            background: url("/img/Background_4.png") no-repeat center / cover;
+            aspect-ratio: 183 / 183;
+        }
+
+        .card-footer {
+        }
+    }
+
+    .card--five {
+        grid-row: span 2 / span 2;
+        grid-column-start: 6;
+        grid-row-start: 1;
+
+        @include responsive(1024px) {
+            grid-row: span 2 / span 2;
+            grid-column: 4;
+        }
+
+        @include responsive(360px) {
+        }
+
+        .card-header {
+            background: url("/img/Background_5.png") no-repeat center / cover;
+            aspect-ratio: 183 / 183;
+        }
+
+        .card-footer {
+        }
+    }
 }
 
 .swiper-slide img {
@@ -360,17 +614,4 @@ body.no-scroll {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.swiper-slide {
-    width: 60%;
-    padding: 20px;
-}
-
-.swiper-slide:first-child {
-    width: 40%;
-}
-
-.swiper-slide:last-child {
-    width: 40%;
 }
